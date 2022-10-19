@@ -1,0 +1,24 @@
+<div class="container">
+ <div class="row">
+  <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+   <h2>User info</h2>
+   <% if @user.errors.any? %>
+    <%= @user.errors.count %>error prohibited this obj from being saved:
+     <ul>
+      <% @user.errors.full_messages.each do |message| %>
+       <li><%= message %></li>
+      <% end %>
+     </ul>
+   <% end %>
+   <%= form_with model: @user do |f| %>
+   <h6>Name</h6>
+   <%= f.text_field :name, class:"form-control" %>
+   <h6>Image</h6>
+   <%= f.file_field :profile_image, placeholder: "profile_image", accept: "image/*" %>
+   <h6>Introduction</h6>
+   <%= f.text_field :introduction, class:"form-control" %>
+   <%= f.submit "Update User" %>
+   <% end %>
+  </div>
+ </div>
+</div>
